@@ -41,8 +41,8 @@ def lobby():
 
             elif command[0] == 'run':
                 create_pdfs(filenames, dir)
-                merge_pdfs(filenames, output)
-                delete_files(filenames)
+                merge_pdfs(filenames, output, dir)
+                delete_files(filenames, dir)
                 time.sleep(1)
 
             elif command[0] == 'out':

@@ -52,7 +52,7 @@ def create_pdfs(filenames, dir):
                 else: page_one_title += filenames[i][j]
 
             pdf.set_font(normal_font, size = 22)
-            pdf.cell(200, 5, txt = page_one_title, ln = 1, align = 'C')
+            pdf.cell(190, 5, txt = page_one_title, ln = 1, align = 'C')
             pdf.ln(16)
 
             pdf.set_font(normal_font, size = 12)
@@ -65,21 +65,21 @@ def create_pdfs(filenames, dir):
             pdf.set_font(code_font, size = 12)
             pdf.write(5, f)
 
-        pdf.output(f'{filenames[i]}.pdf')
+        pdf.output(f'{dir}\{filenames[i]}.pdf')
 
-def merge_pdfs(filenames, output):
+def merge_pdfs(filenames, output, dir):
     merger = PdfFileMerger()
 
     try:
         for pdf in filenames:
             print(f'merging to final file [{pdf}]')
-            merger.append(f'{pdf}.pdf')
+            merger.append(f'{dir}\{pdf}.pdf')
     except: pass
 
-    merger.write(output)
+    merger.write(f'{dir}\{output}')
     merger.close()
 
-def delete_files(filenames):
+def delete_files(filenames, dir):
     for f in filenames:
         print(f'deleting temp files [{f}]')
-        os.remove(f'{f}.pdf')
+        os.remove(f'{dir}\{f}.pdf')
