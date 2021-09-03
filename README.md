@@ -38,6 +38,7 @@ Este comando representa o nome do arquivo final, por padrão é 'result'
 
 - ### load
 Caso tenha alguma mudança nos arquivos dentro do diretório selecionado, o script precisa ser atualizado para que os novos arquivos sejam adicionados ou os antigos sejam removidos, para isso, usa-se o comando load
+Obs: O load reseta todas as configurações de swap
 
 - ### run
 Para gerar o pdf final, utilize o comando run
