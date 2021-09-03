@@ -1,8 +1,5 @@
 import os
-from fpdf import FPDF
-from PyPDF2 import PdfFileMerger
 import shutil
-from termcolor import colored
 
 from modules import *
 
