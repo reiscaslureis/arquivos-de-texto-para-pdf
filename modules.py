@@ -47,7 +47,9 @@ def create_pdfs(filenames, dir):
             for j in range(len(filenames[i])):
                 if filenames[i][j] == '.':
                     break
-                page_one_title += filenames[i][j]
+                elif filenames[i][j] == '-':
+                    pass
+                else: page_one_title += filenames[i][j]
 
             pdf.set_font(normal_font, size = 22)
             pdf.cell(200, 5, txt = page_one_title, ln = 1, align = 'C')
