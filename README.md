@@ -47,4 +47,4 @@ Para gerar o pdf final, utilize o comando run
 Obs: O pdf será gerado no mesmo diretório que o arquivo 'main.py' se encontra
 
 - ### quit
-Finalizar o script
+Finaliza o script
