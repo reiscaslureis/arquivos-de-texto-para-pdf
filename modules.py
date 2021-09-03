@@ -19,8 +19,8 @@ def print_help():
     print(f''' > dir 'C:\XXX'
  > swap 'x' 'y'
  > out 'output-name'
- > run
  > load
+ > run
  > quit''')
 
 def create_pdfs(filenames, dir):  
