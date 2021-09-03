@@ -1,5 +1,8 @@
 import os
 import shutil
+import time
+
+from PyPDF2.generic import NullObject
 
 from modules import *
 
@@ -22,10 +25,8 @@ def lobby():
 
             print(columns * '-')
 
-            if ph == True:
-                print_help()
-                ph = False
-                print(columns * '-')
+            print_help()
+            print(columns * '-')
 
             command = input(' > ').split()
 
@@ -42,7 +43,7 @@ def lobby():
                 create_pdfs(filenames, dir)
                 merge_pdfs(filenames, output)
                 delete_files(filenames)
-                os.system('PAUSE')
+                time.sleep(1)
 
             elif command[0] == 'out':
                 output = command[1] + '.pdf'
@@ -52,10 +53,7 @@ def lobby():
 
             elif command[0] == 'quit':
                 break
-
-            elif command[0] == 'help':
-                ph = True
-
+    
         except: pass
 
 columns, rows = shutil.get_terminal_size()

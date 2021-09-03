@@ -1,7 +1,6 @@
 import os
 from fpdf import FPDF
 from PyPDF2 import PdfFileMerger
-import shutil
 from termcolor import colored
 
 def list_of_files(dir):
@@ -17,16 +16,16 @@ def print_list_of_files(filenames):
         else: print( colored(f'[{i}] {filenames[i]}', 'cyan'))
 
 def print_help():
-    print(f'''dir 'C:\XXX'
-swap 'x' 'y'
-out 'output-name'
-run
-load
-quit''')
+    print(f''' > dir 'C:\XXX'
+ > swap 'x' 'y'
+ > out 'output-name'
+ > run
+ > load
+ > quit''')
 
 def create_pdfs(filenames, dir):  
     for i in range(len(filenames)):
-        print(colored(f'criando PDF para [{filenames[i]}]', 'green'))
+        print(f'creating PDF to [{filenames[i]}]')
 
         f = open(f'{dir}\{filenames[i]}', 'r')
 
@@ -52,7 +51,7 @@ def merge_pdfs(filenames, output):
 
     try:
         for pdf in filenames:
-            print(colored(f'juntando ao arquivo final [{pdf}]', 'green'))
+            print(f'merging to final file [{pdf}]')
             merger.append(f'{pdf}.pdf')
     except: pass
 
@@ -61,5 +60,5 @@ def merge_pdfs(filenames, output):
 
 def delete_files(filenames):
     for f in filenames:
-        print(colored(f'deletando arquivo temporario [{f}]', 'green'))
+        print(f'deleting temp files [{f}]')
         os.remove(f'{f}.pdf')
