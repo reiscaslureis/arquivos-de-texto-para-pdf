@@ -3,3 +3,4 @@ __pycache__
 build
 main.spec
 result.pdf
+.vscode

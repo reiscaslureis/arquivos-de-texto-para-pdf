@@ -76,7 +76,7 @@ def merge_pdfs(filenames, output, dir):
             merger.append(f'{dir}\{pdf}.pdf')
     except: pass
 
-    merger.write(f'{dir}\{output}')
+    merger.write(f'{output}')
     merger.close()
 
 def delete_files(filenames, dir):
