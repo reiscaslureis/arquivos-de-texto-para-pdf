@@ -16,7 +16,7 @@ def print_list_of_files(filenames):
         else: print( colored(f'[{i}] {filenames[i]}', 'cyan'))
 
 def print_help():
-    print(f''' > dir 'C:\XXX'
+    print(f''' > dir 'directory'
  > swap 'x' 'y'
  > out 'output-name'
  > load
