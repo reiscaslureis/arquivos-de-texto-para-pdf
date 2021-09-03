@@ -31,7 +31,7 @@ python3 main.py
 Representa o diretório onde todos os arquivos de texto estão, se necessário, crie uma pasta para todos os arquivos
 
 - ### swap 'x' 'y'
-Após ter selecionado o diretório, todos os arquivos nele aparecerão no terminal com um index, a ordem que aparecer é a ordem que o pdf vai ser gerado. Você pode modificar isso com o comando swap, passando como argumento os dois arquivos de texto que serão trocados de lugar
+Após ter selecionado o diretório, todos os arquivos nele aparecerão no terminal com um índice, a ordem que aparecer é a ordem que o pdf vai ser gerado. Você pode modificar isso com o comando swap, passando como argumento os dois índices dos arquivos de texto que serão trocados de lugar
 
 - ### out 'output-name'
 Este comando representa o nome do arquivo final, por padrão é 'result.pdf'
