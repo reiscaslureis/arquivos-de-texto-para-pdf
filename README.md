@@ -27,20 +27,20 @@ python3 main.py
 ```
 
 # Comandos
-### dir 'directory'
+- ### dir 'directory'
 Representa o diretório onde todos os arquivos de texto estão, se necessário, crie uma pasta para todos os arquivos
 
-### swap 'x' 'y'
+- ### swap 'x' 'y'
 Após ter selecionado o diretório, todos os arquivos nele aparecerão no terminal com um index, a ordem que aparecer é a ordem que o pdf vai ser gerado. Você pode modificar isso com o comando swap, passando como argumento os dois arquivos de texto que serão trocados de lugar
 
-### out 'output-name'
+- ### out 'output-name'
 Este comando representa o nome do arquivo final, por padrão é 'result.pdf'
 
-### load
+- ### load
 Caso tenha alguma mudança nos arquivos dentro do diretório selecionado, o script precisa ser atualizado para que os novos arquivos sejam adicionados ou os antigos sejam removidos, para isso, usa-se o comando load
 
-### run
+- ### run
 Para gerar o pdf final, utilize o comando run
 
-### quit
+- ### quit
 Finalizar o script
