@@ -23,26 +23,45 @@ def print_help():
  > run
  > quit''')
 
-def create_pdfs(filenames, dir):  
+def create_pdfs(filenames, dir):
+    global first_page_font
+    global code_font
+
+    normal_font = './fonts/Arial'
+    code_font = './fonts/Hack-Regular'
+
     for i in range(len(filenames)):
         print(f'creating PDF to [{filenames[i]}]')
 
-        f = open(f'{dir}\{filenames[i]}', 'r')
+        f = open(f'{dir}\{filenames[i]}', encoding="utf-8").read()
 
         pdf = FPDF() 
+        pdf.add_font(normal_font, '', normal_font + '.ttf', uni = True)
+        pdf.add_font(code_font, '', code_font + '.ttf', uni = True)
+
         pdf.add_page()
 
-        pdf.set_font('Helvetica', size = 15) 
+        if i == 0:
+            page_one_title = ''
 
-        if i != 0:
-            pdf.cell(200, 5, txt = filenames[i], ln = 1, align = 'C')
-        
-        pdf.cell(200, 5, txt = ' ', ln = 1, align = 'L')
- 
-        pdf.set_font('Helvetica', size = 12)
+            for j in range(len(filenames[i])):
+                if filenames[i][j] == '.':
+                    break
+                page_one_title += filenames[i][j]
 
-        for x in f:
-            pdf.cell(200, 5, txt = x, ln = 1, align = 'L') 
+            pdf.set_font(normal_font, size = 22)
+            pdf.cell(200, 5, txt = page_one_title, ln = 1, align = 'C')
+            pdf.ln(16)
+
+            pdf.set_font(normal_font, size = 12)
+            pdf.write(5, f)
+
+        else:
+            pdf.set_font(normal_font, size = 16)
+            pdf.write(5, filenames[i] + '\n\n\n')
+            
+            pdf.set_font(code_font, size = 12)
+            pdf.write(5, f)
 
         pdf.output(f'{filenames[i]}.pdf')
 
