@@ -1,4 +1,5 @@
 import os
+from shutil import SpecialFileError
 from fpdf import FPDF
 from PyPDF2 import PdfFileMerger
 from termcolor import colored
@@ -9,22 +10,20 @@ def list_of_files(dir):
 
     return filenames
 
-def print_list_of_files(filenames):
+def print_list_of_files(filenames, specials):
     for i in range(len(filenames)):
+        if filenames.index(filenames[i]) in specials:
+            color = 'green'
+        else: color = 'cyan'
         if i < 10:
-            print(colored(f'[0{i}] {filenames[i]}', 'cyan'))
-        else: print( colored(f'[{i}] {filenames[i]}', 'cyan'))
+            print(colored(f'[0{i}] {filenames[i]}', color))
+        else: print( colored(f'[{i}] {filenames[i]}', color))
 
 def print_help():
-    print(f''' > d 'diretorio'                          < diretorio onde estao todos os arquivos de texto
- > s 'x' 'y'                              < troca a posicao de um arquivo x com com y
- > o 'nome-do-arquivo-final'              < nome do arquivo que vai ser gerado no final
- > i 'x' 'y'                              < insere um arquivo x na posicao y
- > l                                      < recarrega os arquivos da pasta 
- > r                                      < executa o objetivo do script 
- > q                                      < finaliza o script''')
+    with open('help.txt', 'r') as helpt:
+        print(helpt.read())
 
-def create_pdfs(filenames, dir):
+def create_pdfs(filenames, dir, specials):
     global first_page_font
     global code_font
 
@@ -42,18 +41,9 @@ def create_pdfs(filenames, dir):
 
         pdf.add_page()
 
-        if filenames[i][:1] == '-':
-            page_one_title = ''
-
-            for j in range(len(filenames[i])):
-                if filenames[i][j] == '.':
-                    break
-                elif filenames[i][j] == '-':
-                    pass
-                else: page_one_title += filenames[i][j]
-
+        if filenames.index(filenames[i]) in specials:
             pdf.set_font(normal_font, size = 22)
-            pdf.cell(190, 5, txt = page_one_title, ln = 1, align = 'C')
+            pdf.cell(190, 5, txt = filenames[i], ln = 1, align = 'C')
             pdf.ln(16)
 
             pdf.set_font(normal_font, size = 12)

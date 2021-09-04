@@ -9,6 +9,7 @@ from modules import *
 def lobby():
     output = 'resultado.pdf'
     ph = False
+    specials = []
     while True:
         try:
             os.system('cls')
@@ -18,7 +19,7 @@ def lobby():
                 print(f' resultado > {output}')
                 print(columns * '-')
                 print('> Ordem das Paginas do PDF <'.center(columns))
-                print_list_of_files(filenames)
+                print_list_of_files(filenames, specials)
             except: 
                 print(f' diretorio >')
                 print(f' resultado >')
@@ -45,7 +46,7 @@ def lobby():
                 filenames.insert(int(command[2]), aux)
 
             elif command[0] == 'r':
-                create_pdfs(filenames, dir)
+                create_pdfs(filenames, dir, specials)
                 merge_pdfs(filenames, output, dir)
                 delete_files(filenames, dir)
                 time.sleep(1)
@@ -58,6 +59,11 @@ def lobby():
 
             elif command[0] == 'q':
                 break
+
+            elif command[0] == 't':
+                if int(command[1]) in specials:
+                    specials.remove(int(command[1]))
+                else: specials.append(int(command[1]))
     
         except: pass
 
