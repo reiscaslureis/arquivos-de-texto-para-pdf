@@ -2,8 +2,6 @@ import os
 import shutil
 import time
 
-from PyPDF2.generic import NullObject
-
 from modules import *
 
 def lobby():  
