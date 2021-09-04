@@ -15,7 +15,6 @@ def lobby():
             os.system('cls')
             print(columns * '-')
             try:
-                print(specials)
                 print(f' diretorio > {dir}')
                 print(f' resultado > {output}')
                 print(columns * '-')
