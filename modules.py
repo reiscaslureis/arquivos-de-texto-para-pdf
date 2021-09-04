@@ -42,7 +42,7 @@ def create_pdfs(filenames, dir):
 
         pdf.add_page()
 
-        if i == 0 and filenames[i][:1] == '-':
+        if filenames[i][:1] == '-':
             page_one_title = ''
 
             for j in range(len(filenames[i])):
