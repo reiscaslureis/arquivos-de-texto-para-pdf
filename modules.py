@@ -16,12 +16,13 @@ def print_list_of_files(filenames):
         else: print( colored(f'[{i}] {filenames[i]}', 'cyan'))
 
 def print_help():
-    print(f''' > dir 'directory'
- > swap 'x' 'y'
- > out 'output-name'
- > load
- > run
- > quit''')
+    print(f''' > d 'diretorio'                      directory < diretorio onde estao todos os arquivos de texto
+ > s 'x' 'y'                               swap < troca a posicao de um arquivo x com com y
+ > o 'nome-do-arquivo-final'             output < nome do arquivo que vai ser gerado no final
+ > i 'x' 'y'                             insert < insere um arquivo x na posicao y
+ > l                                       load < recarrega os arquivos da pasta 
+ > r                                        run < executa o objetivo do script 
+ > q                                       quit < finaliza o script''')
 
 def create_pdfs(filenames, dir):
     global first_page_font
