@@ -1,8 +1,4 @@
  > d 'diretorio'                   < diretorio onde estao todos os arquivos de texto
- > s 'x' 'y'                       < troca a posicao de um arquivo x com com y
- > o 'nome-do-arquivo-final'       < nome do arquivo que vai ser gerado no final
  > i 'x' 'y'                       < insere um arquivo x na posicao y
- > t 'x'                           < define um arquivo com index x como pdf especial    
- > l                               < recarrega os arquivos da pasta 
+ > s 'x'                           < define um arquivo com index x como pdf especial    
  > r                               < cria o pdf final com as configuracoes atuais 
- > q                               < finaliza o script

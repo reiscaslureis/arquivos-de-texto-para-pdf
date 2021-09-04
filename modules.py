@@ -1,29 +1,24 @@
 import os
-from shutil import SpecialFileError
 from fpdf import FPDF
 from PyPDF2 import PdfFileMerger
-from termcolor import colored
 
 def list_of_files(dir):
     for (dirpath, dirnames, filenames) in os.walk(dir):
         break
 
+    new = []
+
+    for i in filenames:
+        aux = []
+        aux.append(i)
+        aux.append(False)
+        new.append(aux)
+
+    filenames = new
+
     return filenames
 
-def print_list_of_files(filenames, specials):
-    for i in range(len(filenames)):
-        if filenames.index(filenames[i]) in specials:
-            color = 'green'
-        else: color = 'cyan'
-        if i < 10:
-            print(colored(f'[0{i}] {filenames[i]}', color))
-        else: print( colored(f'[{i}] {filenames[i]}', color))
-
-def print_help():
-    with open('help.txt', 'r') as helpt:
-        print(helpt.read())
-
-def create_pdfs(filenames, dir, specials):
+def create_pdfs(filenames, dir):
     global first_page_font
     global code_font
 
@@ -31,9 +26,9 @@ def create_pdfs(filenames, dir, specials):
     code_font = './fonts/Hack-Regular'
 
     for i in range(len(filenames)):
-        print(f'creating PDF to [{filenames[i]}]')
+        print(f'creating PDF to [{filenames[i][0]}]')
 
-        f = open(f'{dir}\{filenames[i]}', encoding="utf-8").read()
+        f = open(f'{dir}\{filenames[i][0]}', encoding="utf-8").read()
 
         pdf = FPDF() 
         pdf.add_font(normal_font, '', normal_font + '.ttf', uni = True)
@@ -41,13 +36,13 @@ def create_pdfs(filenames, dir, specials):
 
         pdf.add_page()
 
-        if filenames.index(filenames[i]) in specials:
+        if filenames[i][1] == True:
             aux = ''
 
-            for j in range(len(filenames[i])):
-                if filenames[i][j] == '.':
+            for j in range(len(filenames[i][0])):
+                if filenames[i][0][j] == '.':
                     break
-                else: aux += filenames[i][j]
+                else: aux += filenames[i][0][j]
 
             pdf.set_font(normal_font, size = 22)
             pdf.cell(190, 5, txt = aux, ln = 1, align = 'C')
@@ -58,26 +53,26 @@ def create_pdfs(filenames, dir, specials):
 
         else:
             pdf.set_font(normal_font, size = 16)
-            pdf.write(5, filenames[i] + '\n\n\n')
+            pdf.write(5, filenames[i][0] + '\n\n\n')
             
             pdf.set_font(code_font, size = 12)
             pdf.write(5, f)
 
-        pdf.output(f'{dir}\{filenames[i]}.pdf')
+        pdf.output(f'{dir}\{filenames[i][0]}.pdf')
 
 def merge_pdfs(filenames, output, dir):
     merger = PdfFileMerger()
 
     try:
-        for pdf in filenames:
-            print(f'merging to final file [{pdf}]')
-            merger.append(f'{dir}\{pdf}.pdf')
+        for i in range(len(filenames)):
+            print(f'merging to final file [{filenames[i][0]}]')
+            merger.append(f'{dir}\{filenames[i][0]}.pdf')
     except: pass
 
-    merger.write(f'{output}')
+    merger.write(f'{output}.pdf')
     merger.close()
 
 def delete_files(filenames, dir):
-    for f in filenames:
-        print(f'deleting temp files [{f}]')
-        os.remove(f'{dir}\{f}.pdf')
+    for i in range(len(filenames)):
+        print(f'deleting temp files [{filenames[i][0]}.pdf]')
+        os.remove(f'{dir}\{filenames[i][0]}.pdf')
