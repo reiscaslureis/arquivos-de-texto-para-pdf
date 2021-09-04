@@ -27,10 +27,14 @@ python3 main.py
 ```
 
 # Comandos
- > d 'diretorio'                   < diretorio onde estao todos os arquivos de texto
+#### d 'diretorio'                    
+Diretorio onde estao todos os arquivos de texto
  
- > i 'x' 'y'                       < insere um arquivo x na posicao y
+#### i 'x' 'y'                        
+Insere um arquivo x na posicao y
  
- > s 'x'                           < define um arquivo com index x como pdf especial  
+#### s 'x'                            
+Define um arquivo com index x como pdf especial  
    
- > r                               < cria o pdf final com as configuracoes atuais 
+#### r                                
+Cria o pdf final com as configuracoes atuais 
