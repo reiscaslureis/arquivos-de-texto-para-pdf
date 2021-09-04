@@ -6,8 +6,6 @@ from termcolor import colored
 from modules import *
 
 def print_filenames_list(filenames):
-    print(columns * '-')
-
     for i in range(len(filenames)):
         if filenames[i][1] == False:
             color = 'cyan'
@@ -42,10 +40,11 @@ def lobby():
         global columns
         columns, rows = shutil.get_terminal_size()
         os.system('cls')
+        print(columns * '-')
         try:
             print_filenames_list(filenames)
             print_help()
-        except: pass
+        except: print_help()
 
         command = input(' > ').split()
 
