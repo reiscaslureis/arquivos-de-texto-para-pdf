@@ -15,6 +15,7 @@ def lobby():
             os.system('cls')
             print(columns * '-')
             try:
+                print(specials)
                 print(f' diretorio > {dir}')
                 print(f' resultado > {output}')
                 print(columns * '-')
@@ -22,7 +23,7 @@ def lobby():
                 print_list_of_files(filenames, specials)
             except: 
                 print(f' diretorio >')
-                print(f' resultado >')
+                print(f' resultado > {output}')
 
             print(columns * '-')
 
@@ -44,6 +45,9 @@ def lobby():
                 aux = filenames[int(command[1])]
                 filenames.remove(aux)
                 filenames.insert(int(command[2]), aux)
+                
+                specials.remove(int(command[1]))
+                specials.append(int(command[2]))
 
             elif command[0] == 'r':
                 create_pdfs(filenames, dir, specials)

@@ -42,8 +42,15 @@ def create_pdfs(filenames, dir, specials):
         pdf.add_page()
 
         if filenames.index(filenames[i]) in specials:
+            aux = ''
+
+            for j in range(len(filenames[i])):
+                if filenames[i][j] == '.':
+                    break
+                else: aux += filenames[i][j]
+
             pdf.set_font(normal_font, size = 22)
-            pdf.cell(190, 5, txt = filenames[i], ln = 1, align = 'C')
+            pdf.cell(190, 5, txt = aux, ln = 1, align = 'C')
             pdf.ln(16)
 
             pdf.set_font(normal_font, size = 12)
