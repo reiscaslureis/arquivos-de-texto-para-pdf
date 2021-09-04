@@ -6,11 +6,12 @@ from PyPDF2.generic import NullObject
 
 from modules import *
 
-def lobby():
+def lobby():  
     output = 'resultado.pdf'
     ph = False
     specials = []
     while True:
+        columns, rows = shutil.get_terminal_size()
         try:
             os.system('cls')
             print(columns * '-')
@@ -69,8 +70,6 @@ def lobby():
                 else: specials.append(int(command[1]))
     
         except: pass
-
-columns, rows = shutil.get_terminal_size()
 
 lobby()
 
