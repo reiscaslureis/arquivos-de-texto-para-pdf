@@ -42,6 +42,7 @@ def lobby():
         os.system('cls')
         print(columns * '-')
         try:
+            print(dir)
             print_filenames_list(filenames)
             print_help()
         except: print_help()
@@ -50,7 +51,15 @@ def lobby():
 
         try:
             if command[0] == 'd':
-                dir = command[1]
+                dir = ''
+                for l in range(len(command)):
+                    if l == 0:
+                        pass
+                    else:
+                        if l == 1:
+                            dir += f'{command[l]}';
+                        else: dir += f' {command[l]}';
+
                 filenames = list_of_files(dir)
 
             elif command[0] == 's':
