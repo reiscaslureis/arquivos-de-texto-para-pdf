@@ -18,12 +18,12 @@ pip install -r requirements.txt
 > Inicie o script
 - Windows
 ```
-python main.py
+python app.py
 ```
 
 - Linux
 ```
-python3 main.py
+python3 app.py
 ```
 
 # Comandos
