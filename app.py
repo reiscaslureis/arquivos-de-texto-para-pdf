@@ -42,7 +42,6 @@ def lobby():
         os.system('cls')
         print(columns * '-')
         try:
-            print(dir)
             print_filenames_list(filenames)
             print_help()
         except: print_help()
